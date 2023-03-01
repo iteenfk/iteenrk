@@ -2,48 +2,46 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カレンダー</title>
+    <title>パスワードジェネレーター</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>iTeen カレンダー</header>
+    <header>パスワードジェネレーター</header>
     <div class="container">
         <div class="item01">
-            <img src="img/calendar.png" alt="calendar" width="350px">
+            <img src="img/login.jpg" alt="ログイン" width="300">
         </div>
         <div class="item02">
-            <table>
-                <thead>
-                    <tr>
-                        <th id="prev">&laquo;</th>
-                        <th id="title" colspan="5">2023/2</th>
-                        <th id="next">&raquo;</th>
-                    </tr>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td id="today" colspan="7">Today</td>
-                    </tr>
-                </tfoot>
-            </table>
+            <main>
+                <p id="result">aaa111rrr</p>  
+        
+                <button id="btn">パスワード生成</button>
+        
+                <fieldset>
+                    <legend>オプション</legend>
+                    <label>
+                        長さ(<span id="passward-length">6</span>)
+                                                        
+                        <input type="range" id="slider" min="6" max="36" value="6">
+                    </label>
+                    <label>
+                        数字
+                        <input type="checkbox" id="numbers-checkbox">
+                    </label>
+                    <label>
+                        記号
+                        <input type="checkbox" id="symbols-checkbox">
+                    </label>
+        
+                </fieldset>
+            </main>
         </div>
     </div>
-
+    
     <script src="js/main.js"></script>
 </body>
-<footer>2023年3月1日作成
-</footer>
+<footer>2023年3月1日作成</footer>
+
 </html>
