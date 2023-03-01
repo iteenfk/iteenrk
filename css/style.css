@@ -3,6 +3,24 @@
     margin: 0;
 }
 
+header{
+    text-align: center;
+    background: greenyellow;
+    width: auto;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+img{
+    margin-top: 20px;
+}
 main{
     width: 380px;
     margin: 24px auto 0;
@@ -16,7 +34,7 @@ p{
     border: 1px solid gray;
     border-radius: 4px;
     font-family: "Courier New";
-    font-size: 24px;
+    font-size: 16px;
     text-align: center;
     padding: 12px 0;
 }
@@ -24,7 +42,7 @@ p{
 button{
     all: unset;
     width: 100%;
-    background: blue;
+    background: pink;
     border-radius: 8px;
     color: white;
     text-align: center;
@@ -53,3 +71,26 @@ fieldset{
 legend{
     padding: 0 8px;
 }
+
+footer{
+    text-align: center;
+    margin-top: 20px;
+    background: greenyellow;
+    width: auto;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+@media screen and (max-width:480px){
+    .container{
+        display: block;
+    }
+
+    item01{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
