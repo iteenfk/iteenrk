@@ -1,38 +1,124 @@
 "use strict"
 
-const slider = document.getElementById("slider");
-const btn = document.getElementById("btn");
+console.clear();
 
-slider.addEventListener("input", () =>{
-    const passwardLength = document.getElementById("passward-length");
+{
+    // let year = 2023;
+    // let month = 1;//2月
+    const today = new Date();
+    let year =today.getFullYear();
+    let month = today.getMonth();
 
-    passwardLength.textContent = slider.value;
-});
+    function getCalendarhead(){
+        const dates = [];
+        const d = new Date(year, month, 0).getDate();
+        const n = new Date(year , month, 1).getDay();
 
-btn.addEventListener("click", () =>{
-    
-    const result = document.getElementById("result");
-    const numbersCheckbox = document.getElementById("numbers-checkbox");
-    const symbolsCheckbox = document.getElementById("symbols-checkbox");
 
-    const letters ="abcdefghijklmnopqrstuvwxyz";
-    const numbers ="0123456789";
-    const symbols = "#$%&()!{}*+|~[]";
+        for (let i = 0;  i < n; i++){
+            dates.unshift({
+                date: d - i,
+            isToday: false,
+                isDisabled: true,
 
-    let passward = "";
-    let seed = letters + letters.toUpperCase();
-
-    if (numbersCheckbox.checked === true){
-        seed += numbers;
+            });
+        }
+       
+        // console.log(dates);
+        return dates;
     }
 
-    if (symbolsCheckbox.checked === true){
-        seed += symbols;
+
+    function getcalendarBody(){
+        const dates = [];
+        const lastDate = new Date(year,month + 1, 0).getDate();
+
+        for (let i = 1; i <= lastDate; i++){
+            dates.push({
+                date: i,
+                isToday: false,
+                isDisabled: false,
+            });   
+        }
+        // console.log(dates);
+        if (year === today.getFullYear() && month ===today.getMonth()){
+            dates[today.getDate() - 1].isToday = true;
+           }
+        return dates
     }
 
-    for (let i = 0; i < slider.value; i++){
-        passward += seed[Math.floor(Math.random() * seed.length)];
+    function getCalendarTail(){
+        const dates = [];
+        const lastDay = new Date(year, month + 1, 0).getDay();
+
+        for (let i = 1; i < 7 - lastDay; i++){
+            dates.push({
+                date: i,
+                isToday: false,
+                isDisabled: true,
+            });
+        }
+        
+        // console.log(dates);
+        return dates;
+    }
+    function createCarendar(){
+       const tbody = document.querySelector("tbody")
+       while (tbody.firstChild){
+           tbody.removeChild(tbody.firstChild);
+       }
+       const title = `${year}/${month +1}`;
+       document.getElementById("title").textContent = title;
+       const dates = [
+            ...getCalendarhead(),
+            ...getcalendarBody(),
+            ...getCalendarTail(),
+       ]
+        const weeks = [];
+        const weeksCount = dates .length / 7;
+
+        for (let i =0; i < weeksCount; i++){
+            weeks.push (dates.splice(0,7));
+        }
+        weeks.forEach(week => {
+            const tr = document.createElement("tr");
+            week.forEach(date => {
+                const td = document.createElement("td");
+
+                td.textContent = date.date;
+                if (date.isToday){
+                    td.classList.add("today");
+                }
+                if (date.isDisabled){
+                    td.classList.add("disabled")
+                }
+
+                tr.appendChild(td);
+            });
+            document.querySelector("tbody").appendChild(tr);     
+        });        
     }
 
-    result.textContent = passward;
-});
+    document.getElementById("prev").addEventListener("click",() =>{
+        month--;
+        if (month < 0){
+            year--;
+            month = 11;
+        }
+    })
+    document.getElementById("next").addEventListener("click",() =>{
+        month++;
+        if (month > 11){
+            year++;
+            month = 0;
+        }
+        createCarendar();
+    })
+    document.getElementById("today").addEventListener("click",() =>{
+        year = today.getFullYear();
+        month = today.getMonth();
+        
+        createCarendar();
+    })
+    createCarendar();
+}   

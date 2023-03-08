@@ -1,97 +1,73 @@
-*{
-    padding: 0;
-    margin: 0;
-}
+body{
+    font-family: "Courier New",monospace;
+    font-size: 14px;
 
-header{
+}
+h1{
     text-align: center;
-    background: greenyellow;
-    width: auto;
-    height: 50px;
     font-size: 20px;
-    font-weight: bold;
+    background-color: red;
+    width: 300px;
+    height: 40px;
+    margin: 10px auto;
     padding-top: 10px;
-}
-
-.container{
-    display: flex;
-    justify-content: space-around;
-}
-
-img{
-    margin-top: 20px;
-}
-
-main{
-    width: 380px;
-    margin: 24px auto 0;
-    box-shadow: 0 0 8px gray;
-    border-radius: 8px;
-    padding: 16px;
-}
-
-p{
-    margin: 0;
-    border: 1px solid gray;
-    border-radius: 4px;
-    font-family: "Courier New";
-    font-size: 24px;
-    text-align: center;
-    padding: 12px 0;
-}
-
-button{
-    all: unset;
-    width: 100%;
-    background:red;   
-    border-radius: 8px;
     color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+table{
+    border-collapse: collapse;
+    border: solid gray;
+    margin: 0 auto;
+    width: 300px;
+}
+thead,
+tfoot{
+    background: gray;
+}
+th,
+td{
+    padding: 8px;
     text-align: center;
-    padding: 12px 0;
-    margin-top: 16px;
+}
+tbody td:first-child{
+    color: red;
+}
+
+tbody td:last-child{
+    color: blue;
+}
+tfoot{
+    font-weight: bold;
+}
+td.disabled{
+    opacity: 0.3;
+}
+td.today{
+    font-weight: bold;
+    background-color: pink;
+    border: 1px double black ;
+}
+
+#prev,
+#next,
+#today{
     cursor: pointer;
-}
-
-button:hover{
-    opacity: .6;
-}
-
-button:active{
-    opacity: .4;
-}
-
-fieldset{
-    border: 1px dashed blue;
-    border-radius: 8px;
-    padding: 16px;
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
-}
-
-legend{
-    padding: 0 8px;
+    user-select: none;
 }
 
 footer{
     text-align: center;
-    margin-top: 20px;
-    background: greenyellow;
-    width: auto;
-    height: 30px;
     font-size: 15px;
     font-weight: bold;
-    padding-top: 10px;
-}
-
-
-@media screen and (max-width:480px){
-    .container{
-        display: block;
-    }
-
-    item01{
-        width: 100%;    
-        margin: 0 auto;
-    }
+    background: red;
+    width: 300px;
+    height: 30px;
+    margin: 10px auto;
+    padding-top: 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
 }
