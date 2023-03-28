@@ -4,30 +4,37 @@
 }
 
 h1{
-    background-color: palevioletred;
-    display: block;
-    width: 80px;
-    margin: 5px auto;
-    border: 1px solid rgb(221, 91, 4);
-    border-radius: 5px;
-    padding: 5px;
+    background-color: pink;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
     text-align: center;
-    font-size: 10px;
+    line-height: 50px;
+    margin: 10px auto;
+    border: 1px solid red;
+    border-radius: 10px;
+    color:red;
 }
 
-.cal{
-    display: block;
+.hyoji{
+    background-color: pink;
+    width: 200px;
+    height: auto;
+    text-align: center;
     margin: 0 auto;
-    padding: 5px;
-    text-align: center;
-    background-color: palevioletred;
-    border: 1px solid rgb(220, 19, 19) light;
-    border-radius: 5px;
-    width: 80px;
-    height: 200px;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
-input{
-    width: 60px;
-    text-align: right;
+#weather-box h3{
+    color: red;
+    font-size: 18px;
+}
+
+#weather-box p{
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 0 0 8px;
 }
