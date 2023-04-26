@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>時間変換アプリ</title>
+    <title>外国情報アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>iTeen 時間変換アプリ</h1>
-    <form>
-        <label>時間:</label>
-        <input type="number" id="time"><br><br>
-        <label>単位:</label>
-        <select id="unit">
-            <option value="秒">秒</option>
-            <option value="分">分</option>
-            <option value="時間">時間</option>
-            <option value="日">日</option>
-            <option value="週">週</option>
-            <option value="月">月</option>
-            <option value="年">年</option> 
-        </select><br><br>
-        <button type="button" onclick="convertTime()">変換する</button><br><br>
-        <div id="change-box"></div>
-    </form>
+    <h1>外国情報アプリ</h1>
+    <div class="main">
+        <p>調べたい言語を選んでください</p>
+        <label>言語:</label>
+        <select id="select">
+            <option value="en">英語</option>
+            <option value="fr">フランス語</option>
+            <option value="de">ドイツ語</option>
+            <option value="es">スペイン語</option>
+            <option value="ja">日本語</option>
+            <option value="it">イタリア語</option>
+            <option value="ko">韓国語</option>
+            <option value="zh">中国語</option>
+        </select>
+        <br><br>
+        <button onclick="Info()">情報を取得する</button>
+        <div id="info"></div>
+        <br>
+
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

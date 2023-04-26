@@ -1,55 +1,40 @@
-"use script"
+"use strict"
+function Info(){
+  const Code = document.getElementById("select").value;
+  console.log(Code);
+  const url = `https://restcountries.com/v2/lang/${Code}?fields=name,capital,population,flag,area,currencies,languages,timezones`;
 
-let seconds = 0;
+  fetch(url)
+    .then(response => response.json())
+    .then(data =>{
+        const i = Math.floor(Math.random() * data.length);
+        console.log(i);
+        const country = data[i];
+        console.log(country);
+        const name = country.name;
+        const capital = country.capital;
+        const population = country.population;
+        const flag = country.flag;
+        const area = country.area
+        const currency = country.currencies[0]?.name ?? '';
+        const languages = country.languages[0]?.name ?? '';
+        const timezones = country.timezones.join(" ,");
 
-function convertTime(){
-   let time = document.getElementById("time").value;
-   let unit = document.getElementById("unit").value;
-
-   if (unit === "秒") {
-    seconds = time;
-   } else if (unit === "分") {
-    seconds = time * 60;
-   } else if (unit === "時間"){
-    seconds = time * 60 * 60;
-   } else if (unit === "日") {
-    seconds = time * 60 * 60 * 24;
-   } else if (unit ==="週") {
-    seconds = time * 60 * 60 * 24 * 7;
-   } else if (unit === "月") {
-    seconds = time * 60 * 60 * 24 * 30;
-   } else if (unit === "年") {
-    seconds = time * 60 * 60 * 24 * 365;
-   }
-
-
-   const minutes = seconds / 60;
-   const hours = minutes /60;
-   const days = hours / 24;
-   const weeks = days / 7;
-   const months = days / 30;
-   const years = days / 365;
-
-
-   const secondsHtml = Number(seconds).toFixed(2);
-   const minutesHtml = Number(minutes).toFixed(2);
-   const hoursHtml = Number(hours).toFixed(2);
-   const daysHtml = Number(days).toFixed(2);
-   const weeksHtml = Number(weeks).toFixed(2);
-   const monthsHtml = Number(months).toFixed(2);
-   const yearsHtml = Number(years).toFixed(2);
-
-   const change = document.getElementById("change-box");
-   change.innerHTML =`
-   <p> 変換結果を表示</p>
-   <p>${secondsHtml} 秒</p>
-   <p>${minutesHtml} 分</p>
-   <p>${hoursHtml} 時間</p>
-   <p>${daysHtml} 日</p>
-   <p>${weeksHtml} 週</p>
-   <p>${monthsHtml} 月</p>
-   <p>${yearsHtml} 年</p>
-   `;
-   
+        const countryDiv = document.getElementById("info");
+        countryDiv.innerHTML = `
+        <br>
+          <h2>${name}</h2>
+          <p>首都 ${capital}</p>
+          <p>人工 ${population}</p>
+          <p>面積 ${area} km2</p>
+          <p>通貨 ${currency}</p>
+          <p>公用語 ${languages}</p>
+          <p>標準時 ${timezones}</p>
+          <br>
+          <img src="${flag}" alt="${name}の国旗" width="100">
+          `;
+          
+            
+    })
+    .catch(error => console.error(error));
 }
-
