@@ -4,23 +4,29 @@
 }
 
 h1{
-    font-size: 20px;
-    background-color: aliceblue;
+    font-size: 15px;
+    background-color: pink;
     width: 200px;
     height: 50px;
     text-align: center;
     line-height: 50px;
-    margin: 20px auto;
+    margin: 10px auto;
     border: 1px solid red;
     border-radius: 10px;
 }
 
 .main{
-    background-color: aliceblue;
+    background-color: pink;
     width: 200px;
     height: auto;
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
     border: 1px solid red;
     border-radius: 10px;
+}
+
+li{
+    list-style: none;
+    text-align: left;
+    padding: 0 0 0 20px;
 }
