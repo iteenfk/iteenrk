@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今日の予定リスト</title>
+    <title>箇条書きノート作成アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>今日の予定リスト</h1>
-    <div class="main">
-        <input type="text" id="in" placeholder="今日の予定を入れてね">
-        <button onclick="A()">予定の追加</button>
-        <button onclick="C()">予定の削除</button>
-        <ul id="out">
+    <h1>箇条書きノート</h1>
 
-        </ul>
-        <button onclick="P()">プリントPDF</button>
+    <div id="inDiv">
+        <h4>文字入力エリア</h4>
+        <textarea id="inp" placeholder="全角で文字を入れてね！"></textarea>
+        <br>
+        <button onclick="S()">結果出力</button>
+        <button onclick="C()">出力削除</button>
+        <button onclick="P()">PDFに保存</button>
     </div>
-
-    <script src="js/main.js"></script>
+    <br>
+    <div id="outDiv">
+        <h4>文字出力エリア</h4>
+        <ul id="out">
+            
+        </ul>
+    </div>
+    <script src="js/main..js"></script>
 </body>
 </html>
