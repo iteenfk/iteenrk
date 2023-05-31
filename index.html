@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>箇条書きノート作成アプリ</title>
+    <title>英単語帳</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>箇条書きノート</h1>
-
-    <div id="inDiv">
-        <h4>文字入力エリア</h4>
-        <textarea id="inp" placeholder="全角で文字を入れてね！"></textarea>
-        <br>
-        <button onclick="S()">結果出力</button>
-        <button onclick="C()">出力削除</button>
-        <button onclick="P()">PDFに保存</button>
+    <h1>iteen 英単語帳</h1>
+    <br>
+    <div class="main">
+      <label>単語：
+        <input type="text" id="in1">
+      </label>
+      <label>意味：
+        <input type="text" id="in2">
+      </label>  
+      <br><br>
+      <button onclick="A()">追加</button>
+      <button onclick="C()">クリア</button>
+      <button onclick="P()">印刷</button>
     </div>
     <br>
-    <div id="outDiv">
-        <h4>文字出力エリア</h4>
-        <ul id="out">
-            
-        </ul>
-    </div>
-    <script src="js/main..js"></script>
+    <ol id="out"></ol>
+    <script src="js/main.js"></script>
 </body>
 </html>

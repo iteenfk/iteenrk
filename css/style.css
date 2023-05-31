@@ -4,32 +4,28 @@
 }
 
 h1{
-    font-size: 20px;
+    font-size: 30px;
+    background-color: aqua;
+    width: 500px;
+    height: 45px;
     text-align: center;
-
+    line-height: 50px;
+    margin: 10px auto;
+    border: solid lightblue;
+    border-radius: 10px;
+    color: rgb(30, 167, 213);
 }
 
-#inDiv{
+.main{
     text-align: center;
 }
 
-#inp{
-    width: 400px;
-    height: 150px;
-}
-
-#outDiv{
+ol{
     text-align: center;
-
-}
-#out{
-    text-align: left;
-    width: 400px;
-    display: block;
-    margin: auto;
-    
+    margin: 0px auto;
+    width: 30%;
 }
 
 li{
-    list-style: decimal;
+    text-align: left;
 }
