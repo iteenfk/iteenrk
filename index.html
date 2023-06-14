@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英単語帳</title>
-    <link rel="stylesheet" href="css/style.css">
+  <title>簡易予算管理アプリ</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>iteen 英単語帳</h1>
-    <br>
-    <div class="main">
-      <label>単語：
-        <input type="text" id="in1">
-      </label>
-      <label>意味：
-        <input type="text" id="in2">
-      </label>  
-      <br><br>
-      <button onclick="A()">追加</button>
-      <button onclick="C()">クリア</button>
-      <button onclick="P()">印刷</button>
-    </div>
-    <br>
-    <ol id="out"></ol>
-    <script src="js/main.js"></script>
+  <div class="main">
+
+    <h1>簡易予算管理アプリ</h1>
+  
+    <h2>収入の追加</h2>
+    <input type="number" id="inc" placeholder="収入金額">
+    <button onclick="Ainc()">追加</button>
+  
+    <h2>支出の追加</h2>
+    <input type="number" id="exp" placeholder="支出金額">
+    <button onclick="Aexp()">追加</button>
+  
+    <h2>残高</h2>
+    <p id="zan">0</p>
+  
+    <h2>収入リスト</h2>
+    <ul id="inc-list"></ul>
+  
+    <h2>支出リスト</h2>
+    <ul id="exp-list"></ul>
+  
+    <button onclick="P()">PDF保存</button>
+    <button onclick="C()">クリア</button>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
