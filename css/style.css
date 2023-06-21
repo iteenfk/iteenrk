@@ -1,12 +1,35 @@
-.main{
+*{
+    padding: 0;
+    margin: 0;
+}
 
+body {
+    width: 100%;
+}
+
+.main{
+    border: 1px solid black;
+    width: 30%;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+h1{
+    font-size: 15px;
     text-align: center;
 }
 
-li{
-    width: 100px;
-    text-align: right;
-    display: block;
-    margin: 0 auto;
+.in{
+    width: 100%;
+    text-align: center;
+}
 
+input{
+    width: 50%;
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+    text-align: center;
 }

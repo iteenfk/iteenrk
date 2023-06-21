@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>簡易予算管理アプリ</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ボリュームコントロール</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="main">
+    <div class="main">
+        <h1>iTeen 音楽Player</h1>
+        <audio id="player" src="test.mp3"></audio>
+        
+        <div class="btn">
+            <button onclick="play()">再生</button>
+            <button onclick="pause()">一時停止</button>
+            <button onclick="stop()">停止</button>
+        </div>
+        <br>
+        <div class="in">
+            <input type="range" id="slider" oninput="volume()" min="0" max="100" value="50" >
+            <p id="out">50%</p>
+        </div>   
+    </div>
 
-    <h1>簡易予算管理アプリ</h1>
-  
-    <h2>収入の追加</h2>
-    <input type="number" id="inc" placeholder="収入金額">
-    <button onclick="Ainc()">追加</button>
-  
-    <h2>支出の追加</h2>
-    <input type="number" id="exp" placeholder="支出金額">
-    <button onclick="Aexp()">追加</button>
-  
-    <h2>残高</h2>
-    <p id="zan">0</p>
-  
-    <h2>収入リスト</h2>
-    <ul id="inc-list"></ul>
-  
-    <h2>支出リスト</h2>
-    <ul id="exp-list"></ul>
-  
-    <button onclick="P()">PDF保存</button>
-    <button onclick="C()">クリア</button>
-  </div>
+    <script src="js/main.js"></script>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
