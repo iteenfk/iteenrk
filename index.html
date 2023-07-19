@@ -1,29 +1,50 @@
-<!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ボリュームコントロール</title>
-    <link rel="stylesheet" href="css/style.css">
+<style>
+.main{
+border:5px dotted red;
+text-align:center;
+width: 300px;
+margin: auto;
+padding-top: 20px;
+border-radius: 20px;
+background-color:  lightgreen;
+}
+h1{
+font-size:20px;
+text-align: center;
+}
+</style>
 </head>
 <body>
-    <div class="main">
-        <h1>iTeen 音楽Player</h1>
-        <audio id="player" src="test.mp3"></audio>
-        
-        <div class="btn">
-            <button onclick="play()">再生</button>
-            <button onclick="pause()">一時停止</button>
-            <button onclick="stop()">停止</button>
-        </div>
-        <br>
-        <div class="in">
-            <input type="range" id="slider" oninput="volume()" min="0" max="100" value="50" >
-            <p id="out">50%</p>
-        </div>   
-    </div>
+<h1>webリンクアプリ</h1>
+<div class="main">
+<select id="in" onchange="A()">
+<option value="">リンク選択</option>
+<option value="1">週間天気</option>
+<option value="2">地震情報</option>
+<option value="3">火山情報</option>
+</select>
+<p id="out">wedリンク先</p>
+</div>
 
-    <script src="js/main.js"></script>
+<script>
+function A(){
+if (document.getElementById("in").value == "1"){
+document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/onebox/tenki/week/?fm=header" target = "_blank">週間天気</a>`;
+}
 
+if (document.getElementById("in").value == "2"){
+document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/s/quake/?fm=header" target = "_blank">地震情報</a>`;
+}
+
+if (document.getElementById("in").value == "3"){
+document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/s/volcano/?fm=header" target = "_blank">火山情報</a>`;
+}
+
+
+
+}
+</script>
 </body>
 </html>
