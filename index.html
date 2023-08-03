@@ -1,50 +1,52 @@
 <html>
 <head>
+<title>RadioBoxとSlider</title>
 <style>
 .main{
-border:5px dotted red;
+border:1px solid red;
+width:300px;
 text-align:center;
-width: 300px;
-margin: auto;
-padding-top: 20px;
-border-radius: 20px;
-background-color:  lightgreen;
+padding-top:20px;
+margin:auto;
+
 }
+
 h1{
-font-size:20px;
-text-align: center;
+font-size:15px;
+text-align:center;
 }
 </style>
 </head>
 <body>
-<h1>webリンクアプリ</h1>
+<h1>RadioBoxとSliderの練習問題</h1>
 <div class="main">
-<select id="in" onchange="A()">
-<option value="">リンク選択</option>
-<option value="1">週間天気</option>
-<option value="2">地震情報</option>
-<option value="3">火山情報</option>
-</select>
-<p id="out">wedリンク先</p>
+25:<input type="radio" name="radiobox" value="25" id="r1" onchange="R()">
+75:<input type="radio" name="radiobox" value="75" id="r2" onchange="R()">
+<br>
+<br>
+<input type="range" min="0" max="100" value="25" id="s" oninput="S()">
+<p id="out">25</p>
 </div>
-
 <script>
-function A(){
-if (document.getElementById("in").value == "1"){
-document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/onebox/tenki/week/?fm=header" target = "_blank">週間天気</a>`;
+function S(){
+document.getElementById("out").textContent = document.getElementById("s").value;
 }
 
-if (document.getElementById("in").value == "2"){
-document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/s/quake/?fm=header" target = "_blank">地震情報</a>`;
+function R(){
+if (document.getElementById("r1").checked){
+document.getElementById("out").textContent = document.getElementById("r1").value;
+document.getElementById("s").value = document.getElementById("r1").value;
 }
 
-if (document.getElementById("in").value == "3"){
-document.getElementById("out").innerHTML = `<a href="https://weathernews.jp/s/volcano/?fm=header" target = "_blank">火山情報</a>`;
+if (document.getElementById("r2").checked){
+document.getElementById("out").textContent = document.getElementById("r2").value;
+document.getElementById("s").value = document.getElementById("r2").value;
 }
 
 
 
 }
+
 </script>
 </body>
 </html>
