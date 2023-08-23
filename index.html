@@ -1,52 +1,59 @@
 <html>
 <head>
-<title>RadioBoxとSlider</title>
+<title>checkboxの練習</title>
 <style>
-.main{
-border:1px solid red;
-width:300px;
-text-align:center;
-padding-top:20px;
-margin:auto;
-
+.x{
+border:2px dotted red;
+border-radius: 10px;
+width: 300px;
+text-align: center;
+margin: auto;
+padding: 10px;
+background-color: yellow;
 }
-
 h1{
-font-size:15px;
-text-align:center;
+text-align: center;
+font-size: 20px;
+}
+body{
+background-color: pink;
 }
 </style>
 </head>
 <body>
-<h1>RadioBoxとSliderの練習問題</h1>
-<div class="main">
-25:<input type="radio" name="radiobox" value="25" id="r1" onchange="R()">
-75:<input type="radio" name="radiobox" value="75" id="r2" onchange="R()">
+<h1>checkboxの練習</h1>
+<div class="x">
+A商品:1,000円:<input type="checkbox" value=1000 id="a" onchange="C()">
 <br>
+B商品:1,500円:<input type="checkbox" value=1500 id="b" onchange="C()">
 <br>
-<input type="range" min="0" max="100" value="25" id="s" oninput="S()">
-<p id="out">25</p>
+C商品:2,000円:<input type="checkbox" value=2000 id="c" onchange="C()">
+
+<br>
+合計金額:<span id="out">0</span>
+<br>
+<button onclick="R()">再読込</button>
 </div>
 <script>
-function S(){
-document.getElementById("out").textContent = document.getElementById("s").value;
+function C(){
+let total =0;
+if (document.getElementById("a").checked == true){
+total +=parseInt(document.getElementById("a").value);
+}
+if (document.getElementById("b").checked == true){
+total += parseInt(document.getElementById("b").value);
+
+}
+if (document.getElementById("c").checked == true){
+total += parseInt(document.getElementById("c").value);
+
+}
+document.getElementById("out").textContent = total.toLocaleString();
 }
 
 function R(){
-if (document.getElementById("r1").checked){
-document.getElementById("out").textContent = document.getElementById("r1").value;
-document.getElementById("s").value = document.getElementById("r1").value;
+location.reload();
 }
-
-if (document.getElementById("r2").checked){
-document.getElementById("out").textContent = document.getElementById("r2").value;
-document.getElementById("s").value = document.getElementById("r2").value;
-}
-
-
-
-}
-
 </script>
 </body>
 </html>
