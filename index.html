@@ -1,70 +1,51 @@
 <html>
-<head>
-<title>お財布アプリ</title>
-<style>
-.X{
-border: 2px dotted red; 
-width: 300px;
-margin: 10px auto;
-padding: 10px;
-text-align: center;
-}
-h1{
-font-size: 20px;
-text-align: center;
-background-color: lightblue;
-width: 300px;
-margin: auto;
 
-}
-.Z{
-width: 300px;
-margin: auto;
+<head>
+<title>勉強達成アプリ</title>
+<style>
+h1{
 text-align: center;
 }
 </style>
-</head>
-<body>
-<h1>お財布アプリ</h1>
-<div class="X">
-入金:<input type="number" id="in1">
-<button onclick="B1()">入金</button>
-<br>
-入金合計:<span id="out1">0</span>
-</div>
-<br>
-<div class="X">
-出金:<input type="number" id="in2">
-<button onclick="B2()">出金</button>
-<br>
-出金合計:<span id="out2">0</span>
-</div>
-<br>
-<div class="Z">
-残金:<span id="zan">0</sapan>
-</div>
 
+</head>
+
+<body>
+<h1>勉強達成アプリ</h1>
+達成目標:<input type="text" id="inte"> 
+目標カレンダー:<input type="date" id="inda">
+<button  onclick="A()">追加</button>
+<button onclick="C()">クリア</button>
+<button onclick="P()">PDF印刷</button>
+
+<ul id="out">目標計画項目一覧
+
+</ul>
 
 <script>
-let total1 = 0;
-let  total2 =  0;
-function B1(){
-if (document.getElementById("in1").value != ""){
-total1 += parseInt(document.getElementById("in1").value);
-document.getElementById("out1").textContent = total1.toLocaleString();
-document.getElementById("in1").value = "";
+
+
+function A(){
+const inte = document.getElementById("inte").value;
+const inda = document.getElementById("inda").value;
+if (inte != "" && inda !=""){
+const li = document.createElement("li");
+li.textContent=`${inda}までに${inte}`;
+document.getElementById("out").appendChild(li);
+document.getElementById("inte").value = "";
+document.getElementById("inda").value = "";
 }
 }
 
-function B2(){
-if (document.getElementById("in2").value != ""){
-total2 += parseInt(document.getElementById("in2").value);
-document.getElementById("out2").textContent = total2.toLocaleString();
-document.getElementById("in2").value = "";
-document.getElementById("zan").textContent = (total1 - total2).toLocaleString();
+function C(){
+location.reload();
+}
 
+function P(){
+window.print();
 }
-}
+
 </script>
 </body>
+
 </html>
