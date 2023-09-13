@@ -1,51 +1,64 @@
 <html>
-
 <head>
-<title>勉強達成アプリ</title>
+<title>9/13</title>
 <style>
-h1{
+h1{font-size: 20px;
+   text-align: center;
+   color: green;
+}
+.b{
 text-align: center;
 }
+
 </style>
-
 </head>
-
 <body>
-<h1>勉強達成アプリ</h1>
-達成目標:<input type="text" id="inte"> 
-目標カレンダー:<input type="date" id="inda">
-<button  onclick="A()">追加</button>
-<button onclick="C()">クリア</button>
-<button onclick="P()">PDF印刷</button>
-
-<ul id="out">目標計画項目一覧
-
-</ul>
-
+<h1>日時表示アプリ</h1>
+<div class="b">
+<p id="out">表示</p>
+<button onclick="B()" id="b">クリック</button>
+</div>
 <script>
+function B(){
 
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth()+1;
+const date = now.getDate();
+let day = now.getDay();
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const seconds = now.getSeconds();
 
-function A(){
-const inte = document.getElementById("inte").value;
-const inda = document.getElementById("inda").value;
-if (inte != "" && inda !=""){
-const li = document.createElement("li");
-li.textContent=`${inda}までに${inte}`;
-document.getElementById("out").appendChild(li);
-document.getElementById("inte").value = "";
-document.getElementById("inda").value = "";
+if (day == 0){
+   day = "日";
 }
-}
-
-function C(){
-location.reload();
-}
-
-function P(){
-window.print();
+if (day == 1){
+   day = "月";
 }
 
+if (day == 2){
+   day = "火";
+}
+
+if (day == 3){
+   day = "水";
+}
+
+if (day == 4){
+   day = "木";
+}
+
+if (day == 5){
+   day = "金";
+}
+
+if (day == 6){
+   day = "土";
+}
+
+document.getElementById("out").textContent = `${year}年${month}月${date}日(${day})${hours}時${minutes}分${seconds}秒`;
+}
 </script>
 </body>
-
 </html>
