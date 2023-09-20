@@ -1,63 +1,75 @@
 <html>
 <head>
-<title>9/13</title>
+<title>9/20</title>
 <style>
-h1{font-size: 20px;
-   text-align: center;
-   color: green;
-}
-.b{
-text-align: center;
+.box_c{
+width: 300px;
+height: 300px;
+background-color: yellow;
+border: 1px solid black;
+border-radius: 10px;
+margin: auto;
+overflow: hidden;
 }
 
+.text_c{
+text-align: center;
+margin:300px 0;
+}
+
+.btn_c{
+text-align: center;
+margin-top: 20px
+}
+
+h1{
+font-size: 20px;
+text-align: center;
+}
 </style>
 </head>
 <body>
-<h1>日時表示アプリ</h1>
-<div class="b">
-<p id="out">表示</p>
-<button onclick="B()" id="b">クリック</button>
+<h1>メッセージスクロール</h1>
+<div class="box_c" id="box_id">
+<p class="text_c">
+ああああああああああああああああああ<br>
+いいいいいいいいいいいいいいいいいい<br>
+ああああああああああああああああああ<br>
+いいいいいいいいいいいいいいいいいい<br>
+
+
+
+</p>
+</div>
+
+<div class="btn_c">
+
+<button onclick="Start()">開始</button>
+<button onclick="Stop()">停止</button>
+
 </div>
 <script>
-function B(){
+const box = document.getElementById("box_id");
+let scroll = 0;
+let t =null;
 
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth()+1;
-const date = now.getDate();
-let day = now.getDay();
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const seconds = now.getSeconds();
+function Start(){
+clearInterval(t);
+t = setInterval(auto,50)
 
-if (day == 0){
-   day = "日";
 }
-if (day == 1){
-   day = "月";
+function Stop(){
+clearInterval(t);
 }
 
-if (day == 2){
-   day = "火";
+function auto(){
+box.scrollTop = scroll;
+if (box.scrollTop < box.scrollHeight - box.clientHeight){
+   scroll = scroll + 1;
+}else{
+   scroll = 0;
+   scrollTop = 0;
 }
-
-if (day == 3){
-   day = "水";
-}
-
-if (day == 4){
-   day = "木";
-}
-
-if (day == 5){
-   day = "金";
-}
-
-if (day == 6){
-   day = "土";
-}
-
-document.getElementById("out").textContent = `${year}年${month}月${date}日(${day})${hours}時${minutes}分${seconds}秒`;
 }
 </script>
 </body>
