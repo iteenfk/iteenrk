@@ -1,74 +1,71 @@
 <html>
 <head>
-<title>9/20</title>
+<title>10/4</title>
 <style>
-.box_c{
-width: 300px;
-height: 300px;
-background-color: yellow;
-border: 1px solid black;
-border-radius: 10px;
-margin: auto;
-overflow: hidden;
+table{
+border-collapse:collapse;
 }
-
-.text_c{
-text-align: center;
-margin:300px 0;
-}
-
-.btn_c{
-text-align: center;
-margin-top: 20px
-}
-
-h1{
-font-size: 20px;
-text-align: center;
+th,td{
+border:1px solid black;
 }
 </style>
 </head>
 <body>
-<h1>メッセージスクロール</h1>
-<div class="box_c" id="box_id">
-<p class="text_c">
-ああああああああああああああああああ<br>
-いいいいいいいいいいいいいいいいいい<br>
-ああああああああああああああああああ<br>
-いいいいいいいいいいいいいいいいいい<br>
+<ul id="ul_id">
+<li>1</li>
+<li>2</li>
+</ul>
+<button onclick="L()">list</button>
+<table id="table_id">
+ <tr>
+  <th>データ1</th>
+  <th>データ2</th>
+  <th>データ3</th>
+ </tr>
+ <tr>
+  <td>data1</td>
+  <td>data2</td>
+  <td>data3</td>
+ </tr>
+<br>
+データ1: <input type="text" id="in1_id"><br>
+データ2: <input type="text" id="in2_id"><br>
+データ3: <input type="text" id="in3_id"><br>
 
-
-
-</p>
-</div>
-
-<div class="btn_c">
-
-<button onclick="Start()">開始</button>
-<button onclick="Stop()">停止</button>
-
-</div>
+</table>
+<button onclick="T()">table</button>
 <script>
-const box = document.getElementById("box_id");
-let scroll = 0;
-let t =null;
-
-function Start(){
-clearInterval(t);
-t = setInterval(auto,50)
-
+function L(){
+const ul = document.getElementById("ul_id");
+const li =  document.createElement("li");
+li.textContent = 3;
+ul.appendChild(li);
 }
-function Stop(){
-clearInterval(t);
-}
+function T(){
 
-function auto(){
-box.scrollTop = scroll;
-if (box.scrollTop < box.scrollHeight - box.clientHeight){
-   scroll = scroll + 1;
-}else{
-   scroll = 0;
-   scrollTop = 0;
+const in1 = document.getElementById("in1_id").value;
+const in2 = document.getElementById("in2_id").value;
+const in3 = document.getElementById("in3_id").value;
+if (in1 !="" && in2 !="" && in3 !="" && in1 !="　" && in2 !="　" && in3 !="　"){
+
+const table = document.getElementById("table_id");
+const tr = document.createElement("tr");
+const td1 = document.createElement("td");
+td1.textContent = document.getElementById("in1_id").value;
+tr.appendChild(td1);
+const td2 = document.createElement("td");
+td2.textContent = document.getElementById("in2_id").value;
+tr.appendChild(td2);
+const td3 = document.createElement("td");
+td3.textContent = document.getElementById("in3_id").value;
+tr.appendChild(td3);
+table.appendChild(tr);
+
+document.getElementById("in1_id").value = "";
+document.getElementById("in2_id").value = "";
+document.getElementById("in3_id").value = "";
+
+
 }
 }
 </script>
