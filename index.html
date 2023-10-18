@@ -1,73 +1,74 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<title>10/4</title>
-<style>
-table{
-border-collapse:collapse;
-}
-th,td{
-border:1px solid black;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10/18</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        *{
+
+        margin: 0;
+        padding: 0;
+        }
+       .dsp_c{
+        border: 3px solid orangered;
+        text-align: center;
+        width: 400px;
+        margin: auto;
+        padding: 10px;
+       } 
+       h1{
+        font-size: 25px;
+        text-align: center;
+       }
+
+       #output_id{
+           display: inline-block;
+       }
+       .output_c{
+        text-align: center;
+        margin: 10px;
+       }
+    </style>
 </head>
 <body>
-<ul id="ul_id">
-<li>1</li>
-<li>2</li>
-</ul>
-<button onclick="L()">list</button>
-<table id="table_id">
- <tr>
-  <th>データ1</th>
-  <th>データ2</th>
-  <th>データ3</th>
- </tr>
- <tr>
-  <td>data1</td>
-  <td>data2</td>
-  <td>data3</td>
- </tr>
-<br>
-データ1: <input type="text" id="in1_id"><br>
-データ2: <input type="text" id="in2_id"><br>
-データ3: <input type="text" id="in3_id"><br>
+    <h1>QRCode作成アプリ</h1>
+    <div class="dsp_c">
 
-</table>
-<button onclick="T()">table</button>
-<script>
-function L(){
-const ul = document.getElementById("ul_id");
-const li =  document.createElement("li");
-li.textContent = 3;
-ul.appendChild(li);
-}
-function T(){
-
-const in1 = document.getElementById("in1_id").value;
-const in2 = document.getElementById("in2_id").value;
-const in3 = document.getElementById("in3_id").value;
-if (in1 !="" && in2 !="" && in3 !="" && in1 !="　" && in2 !="　" && in3 !="　"){
-
-const table = document.getElementById("table_id");
-const tr = document.createElement("tr");
-const td1 = document.createElement("td");
-td1.textContent = document.getElementById("in1_id").value;
-tr.appendChild(td1);
-const td2 = document.createElement("td");
-td2.textContent = document.getElementById("in2_id").value;
-tr.appendChild(td2);
-const td3 = document.createElement("td");
-td3.textContent = document.getElementById("in3_id").value;
-tr.appendChild(td3);
-table.appendChild(tr);
-
-document.getElementById("in1_id").value = "";
-document.getElementById("in2_id").value = "";
-document.getElementById("in3_id").value = "";
+        url:    <input type="text" id="url_id" placeholder="urlをいれる"><br>
+        サイズ: <input type="text" id="size_id" placeholder="数字をいれる"><br>
+        前景色: <input type="text" id="fore_id" placeholder="色をいれる"><br>
+        背景色: <input type="text" id="back_id" placeholder="色をいれる"><br>
+        <br>
+        <button onclick="dsp()">作成</button>
+    </div>
+    <div class="output_c">
 
 
-}
-}
-</script>
+        <p id="output_id"></p>
+    </div>
+    <script>
+        function dsp(){
+
+            const output = document.getElementById("output_id");
+            const url = document.getElementById("url_id").value;
+            const size = document.getElementById("size_id").value;
+            const fore = document.getElementById("fore_id").value;
+            const back= document.getElementById("back_id").value;
+
+            const opt = {text:url,
+                        width:size,
+                        height: size,
+                        colorDark:fore,
+                        colorLight:back,
+                        }
+            new QRCode(output,opt);
+            document.getElementById("url_id").value ="";
+            document.getElementById("size_id").value ="";
+            document.getElementById("fore_id").value="";
+            document.getElementById("back_id").value="";
+        }
+    </script>
 </body>
 </html>
