@@ -1,93 +1,54 @@
 <html>
 <head>
-<title>10/4</title>
+<title>11/28</title>
 <style>
-
-.nhy{
- text-align: center;
-}
-table{
-border-collapse:collapse;
-}
-th,td{
-border:1px solid black;
+body{
+  text-align: center;
 }
 
-h1{
- text-align: center;
- font-size: 50px;
-}
-
-#table_id{
- margin: auto;
- margin-top: 30px;
- width: 80%;
-　
-}
 </style>
 </head>
 <body>
+<h1>好きな言語を選んでください。</h1>
 
-<h1>住所録</h1>
+<input type="radio" name="language" value="javascript">javascript
+<input type="radio" name="language" value="python">python
+<input type="radio" name="language" value="scratch">scratch
 
-<div class="nhy">
-名　　前: <input type="text" id="in1_id"><br>
-ふりがな: <input type="text" id="in2_id"><br>
-郵便番号: <input type="text" id="in3_id"><br>
-住　　所: <input type="text" id="in4_id"><br>
 <br>
-<button onclick="T()">追加</button>
-<button onclick="I()">印刷</button>
+<button onclick="btn()" >クリック</button>
+<div id="output_id"></div>
+<div id="img_id"></div>
 
-<table id="table_id">
- <tr>
-  <th>　名　前　</th>
-  <th>　ふりがな　</th>
-  <th>　郵便番号　</th>
-　<th>　住　所　</th>
- </tr>
-<br>
-
-</table>
-
-</div>
 
 <script>
-function I(){
-  window.print();
+function btn(){
+const output = document.getElementById("output_id");
+const img = document.getElementById("img_id");
+const languages = document.getElementsByName("language");
+console.log(languages);
+for (let i = 0; i < 3; i++){
+const language = languages[i].value;
+if (languages[i].checked == true){
+output.textContent = `好きな言語は${language}です。`
+let src = "";
+if (language == "javascript"){
+src = "javascript.png";
+}
+if (language == "python"){
+src = "python.png";
+}
+if (language == "scratch"){
+src = "scratch.jpg";
+}
+const img_t = document.createElement("img");
+img_t.src = src;
+img_t.width = 300;
+img.innerHTML = "";
+img.appendChild(img_t);
+}
 }
 
-function T(){
-
-const in1 = document.getElementById("in1_id").value.trim();
-const in2 = document.getElementById("in2_id").value.trim();
-const in3 = document.getElementById("in3_id").value.trim();
-const in4 = document.getElementById("in4_id").value.trim();
-if (in1 !="" && in2 !="" && in3 !="" && in4 !=""){
-
-const table = document.getElementById("table_id");
-const tr = document.createElement("tr");
-const td1 = document.createElement("td");
-td1.textContent = document.getElementById("in1_id").value.trim();
-tr.appendChild(td1);
-const td2 = document.createElement("td");
-td2.textContent = document.getElementById("in2_id").value.trim();
-tr.appendChild(td2);
-const td3 = document.createElement("td");
-td3.textContent = document.getElementById("in3_id").value.trim();
-tr.appendChild(td3);
-const td4 = document.createElement("td");
-td4.textContent = document.getElementById("in4_id").value.trim();
-tr.appendChild(td4);
-table.appendChild(tr);
-
-document.getElementById("in1_id").value = "";
-document.getElementById("in2_id").value = "";
-document.getElementById("in3_id").value = "";
-document.getElementById("in4_id").value = "";
-
-
-}
 }
 </script>
 </body>
