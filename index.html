@@ -1,55 +1,88 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<title>11/28</title>
-<style>
-body{
-  text-align: center;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12/5</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #option_id{
+            display: flex;
+            justify-content:center;
+        }
+        .option_c{
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>好きな言語を選んでください。</h1>
+    <h1>クイズアプリ</h1>
+    <div id="question_id"></div>
+    <div id="option_id"></div>
+    <button onclick="next()">次の問題</button>
+    <div id="score_id"></div>
 
-<input type="radio" name="language" value="javascript">javascript
-<input type="radio" name="language" value="python">python
-<input type="radio" name="language" value="scratch">scratch
+    <script>
+        const questions = [
+            {question:"フランスの首都は？", 
+            options:["ベルリン","マドリード","パリ","ローマ"],
+            answer:"パリ"
+        },
+            {question:"赤い惑星とは？",
+            options:["火星","木星","地球","土星"],
+            answer:"火星"
+        },
+            {question:"最大の哺乳類は？",
+            options:["象","シロナガスクジラ","サイ","カバ"],
+            answer:"シロナガスクジラ"
+        },
+        ]
 
-<br>
-<button onclick="btn()" >クリック</button>
-<div id="output_id"></div>
-<div id="img_id"></div>
+        let i = 0;
+        let score = 0;
 
+        function dsp(){
+            const question_out = document.getElementById("question_id");
+            question_out.textContent = questions[i].question;
 
-<script>
-function btn(){
-const output = document.getElementById("output_id");
-const img = document.getElementById("img_id");
-const languages = document.getElementsByName("language");
-console.log(languages);
-for (let i = 0; i < 3; i++){
-const language = languages[i].value;
-if (languages[i].checked == true){
-output.textContent = `好きな言語は${language}です。`
-let src = "";
-if (language == "javascript"){
-src = "javascript.png";
-}
-if (language == "python"){
-src = "python.png";
-}
-if (language == "scratch"){
-src = "scratch.jpg";
-}
-const img_t = document.createElement("img");
-img_t.src = src;
-img_t.width = 300;
-img.innerHTML = "";
-img.appendChild(img_t);
-}
-}
+            const option_out = document.getElementById("option_id");
+            option_out.textContent = "";
 
-}
-</script>
+            for (let j = 0; j < questions[i].options.length; j++){
+                const div = document.createElement("div");
+                div.textContent = questions[i].options[j];
+                div.classList.add("option_c");
+                div.onclick = function click(){
+                    check(questions[i].options[j]);
+                }
+                option_out.appendChild(div);
+            }
+        }
+        function check(option){
+            if (option == questions[i].answer){
+                score++;
+            }
+            const score_out = document.getElementById("score_id");
+            score_out.textContent = `Score:${score}`;
+        }
+
+        function next(){
+            i++;
+            const score_out = document.getElementById("score_id");
+            score_out.textContent = "";
+            if (i < questions.length){
+                dsp();
+            }else{
+                const score_out = document.getElementById("score_id");
+                score_out.textContent = "クイズ終了";
+                const option_out = document.getElementById("option_id");
+                option_out.textContent = "";
+            }
+        }
+
+        dsp();
+    </script>
 </body>
 </html>
